@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sm-flexews-dc1
+  namespace: argocd
+spec:
+  project: production
+  source:
+    repoURL: https://github.com/your-org/k8s-manifests.git
+    targetRevision: HEAD
+    path: apps/sm-flexews/overlays/dc1
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sm-flexews
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

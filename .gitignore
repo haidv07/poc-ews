@@ -1,0 +1,22 @@
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Kubernetes secrets (DO NOT commit secrets!)
+*secret*.yaml
+*password*.yaml
+*credential*.yaml
+
+# Helm
+*.tgz
+charts/
+
+# Kustomize
+kustomization-*.yaml
