@@ -1,7 +1,10 @@
+# DC1 - Full replicas (Active)
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-service
+  namespace: sm-flexews
 spec:
   replicas: 2
 ---
@@ -9,6 +12,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product-service
+  namespace: sm-flexews
 spec:
   replicas: 2
 ---
@@ -16,12 +20,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: order-service
+  namespace: sm-flexews
 spec:
   replicas: 2
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: redis
-spec:
-  replicas: 1
