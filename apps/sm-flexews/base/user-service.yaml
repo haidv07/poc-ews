@@ -19,9 +19,9 @@ spec:
           type: RuntimeDefault
       containers:
       - name: api
-        image: nginx:alpine
+        image: nginxinc/nginx-unprivileged:alpine
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -45,4 +45,4 @@ spec:
     app: user-service
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
