@@ -7,6 +7,11 @@ metadata:
   namespace: sm-flexews
 spec:
   replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -15,6 +20,11 @@ metadata:
   namespace: sm-flexews
 spec:
   replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -23,3 +33,8 @@ metadata:
   namespace: sm-flexews
 spec:
   replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
