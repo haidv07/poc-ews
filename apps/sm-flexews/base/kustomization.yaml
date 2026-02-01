@@ -9,6 +9,7 @@ resources:
   - product-service.yaml
   - order-service.yaml
   - redis.yaml
+  - resource-quota.yaml
   - network-policies.yaml
   - ingress.yaml
 
