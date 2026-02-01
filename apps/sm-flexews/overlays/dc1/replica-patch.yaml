@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service
+  name: ews-web-fe
   namespace: sm-flexews
 spec:
   replicas: 2
@@ -16,7 +16,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: product-service
+  name: ews-web-be-warning
   namespace: sm-flexews
 spec:
   replicas: 2
@@ -29,7 +29,85 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: order-service
+  name: ews-web-be-auth
+  namespace: sm-flexews
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ews-web-be-admin
+  namespace: sm-flexews
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ews-web-be-calc
+  namespace: sm-flexews
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ews-web-be-public
+  namespace: sm-flexews
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ews-bg-etl
+  namespace: sm-flexews
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ews-bg-auto
+  namespace: sm-flexews
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: api
+          image: nginxinc/nginx-unprivileged:alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ews-bg-other
   namespace: sm-flexews
 spec:
   replicas: 2

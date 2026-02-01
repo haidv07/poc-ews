@@ -5,10 +5,15 @@ namespace: sm-flexews
 
 resources:
   - namespace.yaml
-  - user-service.yaml
-  - product-service.yaml
-  - order-service.yaml
-  - redis.yaml
+  - ews-web-fe.yaml
+  - ews-web-be-warning.yaml
+  - ews-web-be-auth.yaml
+  - ews-web-be-admin.yaml
+  - ews-web-be-calc.yaml
+  - ews-web-be-public.yaml
+  - ews-bg-etl.yaml
+  - ews-bg-auto.yaml
+  - ews-bg-other.yaml
   - resource-quota.yaml
   - network-policies.yaml
   - ingress.yaml
