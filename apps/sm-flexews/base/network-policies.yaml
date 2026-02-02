@@ -42,7 +42,7 @@ spec:
     matchExpressions:
     - key: app
       operator: NotIn
-      values: ["redis"]
+      values: ["ews-bg-auto", "ews-bg-etl", "ews-bg-other"]
   policyTypes:
   - Ingress
   ingress:
@@ -50,43 +50,43 @@ spec:
     - namespaceSelector:
         matchLabels:
           kubernetes.io/metadata.name: kong
----
-# Allow egress to Redis
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-egress-to-redis
-spec:
-  podSelector:
-    matchExpressions:
-    - key: app
-      operator: NotIn
-      values: ["redis"]
-  policyTypes:
-  - Egress
-  egress:
-  - to:
-    - podSelector:
-        matchLabels:
-          app: redis
-    ports:
-    - protocol: TCP
-      port: 6379
----
-# Allow ingress to Redis
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-ingress-to-redis
-spec:
-  podSelector:
-    matchLabels:
-      app: redis
-  policyTypes:
-  - Ingress
-  ingress:
-  - from:
-    - podSelector: {}
-    ports:
-    - protocol: TCP
-      port: 6379
+# ---
+# # Allow egress to Redis
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: allow-egress-to-redis
+# spec:
+#   podSelector:
+#     matchExpressions:
+#     - key: app
+#       operator: NotIn
+#       values: ["redis"]
+#   policyTypes:
+#   - Egress
+#   egress:
+#   - to:
+#     - podSelector:
+#         matchLabels:
+#           app: redis
+#     ports:
+#     - protocol: TCP
+#       port: 6379
+# ---
+# # Allow ingress to Redis
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: allow-ingress-to-redis
+# spec:
+#   podSelector:
+#     matchLabels:
+#       app: redis
+#   policyTypes:
+#   - Ingress
+#   ingress:
+#   - from:
+#     - podSelector: {}
+#     ports:
+#     - protocol: TCP
+#       port: 6379

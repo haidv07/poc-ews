@@ -20,8 +20,6 @@ spec:
       containers:
       - name: api
         image: nginxinc/nginx-unprivileged:alpine
-        ports:
-        - containerPort: 8080
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -29,20 +27,28 @@ spec:
               - ALL
         resources:
           requests:
-            cpu: "100m"
-            memory: "128Mi"
+            cpu: "1000m"
+            memory: "1000Mi"
           limits:
-            cpu: "500m"
-            memory: "256Mi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ews-bg-other
-spec:
-  type: ClusterIP
-  selector:
-    app: ews-bg-other
-  ports:
-  - port: 80
-    targetPort: 8080
+            cpu: "1000m"
+            memory: "2000Mi"
+        ports:
+          - name: health-check
+            containerPort: 5000
+            hostPort: 5000
+        readinessProbe:
+          tcpSocket:
+            port: health-check
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: health-check
+          initialDelaySeconds: 15
+          periodSeconds: 20   
+        env:
+        - name: TZ
+          value: "UTC"          
+        envFrom:
+        - configMapRef:
+            name: ews-bg-other-configmap

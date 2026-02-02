@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-fe-configmap
+data:
+  appsettings.js: |
+    window.global = {
+      api_url: "http://localhost:8080"
+    };
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-be-warning-configmap
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-be-auth-configmap
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-be-admin-configmap
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-be-calc-configmap
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-be-public-configmap
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-bg-etl-configmap
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-bg-auto-configmap
+data:
+  LOG_LEVEL: "info"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-bg-other-configmap
+data:
+  LOG_LEVEL: "info"

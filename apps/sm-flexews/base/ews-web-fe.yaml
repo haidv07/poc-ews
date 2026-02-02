@@ -20,8 +20,6 @@ spec:
       containers:
       - name: api
         image: nginxinc/nginx-unprivileged:alpine
-        ports:
-        - containerPort: 8080
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
@@ -29,11 +27,32 @@ spec:
               - ALL
         resources:
           requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
             cpu: "500m"
-            memory: "256Mi"
+            memory: "1000Mi"
+          limits:
+            cpu: "1000m"
+            memory: "2000Mi"
+        volumeMounts:
+        - name: web-config-volume
+          mountPath: /usr/share/nginx/html/configuration/appsettings.js
+          subPath: appsettings.js
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 3        
+        env:
+        - name: NGINX_PORT
+          value: "8080"
+        - name: TZ
+          value: "UTC"        
+      volumes:
+      - name: web-config-volume
+        configMap:
+          name: ews-web-fe-configmap
 ---
 apiVersion: v1
 kind: Service

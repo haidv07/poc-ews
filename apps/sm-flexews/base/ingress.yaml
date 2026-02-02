@@ -8,7 +8,7 @@ metadata:
     konghq.com/strip-path: "true"
 spec:
   rules:
-  - host: llm.example.com
+  - host: sm-flexews.local
     http:
       paths:
       - path: /
