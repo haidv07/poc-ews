@@ -58,3 +58,10 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-be-auth-configmap
+data:
+  LOG_LEVEL: "info"

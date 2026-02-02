@@ -16,7 +16,6 @@ resources:
   - ews-bg-other.yaml
   - resource-quota.yaml
   - network-policies.yaml
-  - configmaps.yaml
   - ingress.yaml
 
 commonLabels:

@@ -51,4 +51,10 @@ spec:
           value: "UTC"          
         envFrom:
         - configMapRef:
-            name: ews-bg-etl-configmap
+            name: ews-bg-etl-configmap---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-bg-etl-configmap
+data:
+  LOG_LEVEL: "info"

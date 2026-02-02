@@ -65,3 +65,13 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ews-web-fe-configmap
+data:
+  appsettings.js: |-
+    window.env = {
+      REACT_APP_API_HOST: "https://abc.com"
+    };
